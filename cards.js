@@ -11,24 +11,28 @@ var button = document.getElementById("button");
 var nested = document.getElementById("nested");
 var cardAndDelete = " ";
 
-// create  button
+// create button
 button.addEventListener("click", function(event){
 	createAndDelete()
 });
 
 // Add text to card and create delete button
 function createAndDelete(card){
-	newCard.innerHTML += input.value + `<br>` + `<button type="button" id="deleteit">Delete</button>` + cardAndDelete + `<br>`;
-	var deleteit = document.getElementById("deleteit");
-	deleteit.addEventListener("click", function(event){
+	newCard.innerHTML += `<div>${input.value}<button type="button" id="deleteit">Delete</button></div><br>`;
+	var deleteIt = document.getElementById("deleteit");
+	deleteIt.addEventListener("click", function(event){
 	deleteCard()
 	});
 };
 
 // Delete card from DOM
-function deleteCard() {
-	document.getElementById("newcarddiv").remove();
-	this.remove();
+
+function deleteCard(card){
+	for (i = 0; i < newCard.length; i++){
+    	deleteIt.item(i).addEventListener("click", function(event){
+        var deleteIt = event.target.closest("div").remove();
+    	});
+    }
 };
 
 // You decide the height/width of the card.
